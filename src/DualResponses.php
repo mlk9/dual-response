@@ -17,9 +17,9 @@ class DualResponses
     {
         if($this->isApiRoute() && !is_null($apiResponse))
         {
-           call_user_func($apiResponse);
+           return call_user_func($apiResponse);
         }else{
-            call_user_func($webResponse);
+            return call_user_func($webResponse);
         }
     }
 
