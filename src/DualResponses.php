@@ -4,6 +4,7 @@ namespace Mlk9\DualResponses;
 
 use Illuminate\Support\Facades\Request;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Response;
 
 class DualResponses
 {
@@ -14,7 +15,8 @@ class DualResponses
     {
         $this->defualtResponse = [
             'status' => true,
-            'message' => 'successful response',
+            'code' => 200,
+            'message' => _('request_successful'),
             'errors' => [],
             'data' => null,
             'time' => Carbon::now()->timestamp,
@@ -33,11 +35,12 @@ class DualResponses
         if(!is_null($apiResponse['errors']))
         {
             $this->defualtResponse['status'] = false;
-            $this->defualtResponse['message'] = 'we have some errors!';
+            $this->defualtResponse['code'] = is_null($apiResponse['code']) ? 400 : $apiResponse['code'];
+            $this->defualtResponse['message'] = is_null($apiResponse['message']) ? _('request_failed') : $apiResponse['message'];
         }
         if($this->isApiRoute() && !is_null($apiResponse))
         {
-            return [...$this->defualtResponse,...$apiResponse];
+            return Response::json([...$this->defualtResponse,...$apiResponse],$this->defualtResponse['code']);
         }else{
             return $webResponse;
         }
