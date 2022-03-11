@@ -8,7 +8,7 @@ use Carbon\Carbon;
 class DualResponses
 {
 
-    private $defualtResponse;
+    private $defualtResponse = [];
 
     public function __construct()
     {
