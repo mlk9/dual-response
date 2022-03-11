@@ -1,13 +1,13 @@
 <?php
 
-namespace Mlk9\DualResponces;
+namespace Mlk9\DualResponses;
 
 use Illuminate\Support\Facades\Request;
 
-class DualResponces
+class DualResponses
 {
     /**
-     * with this function you can send dual responces 
+     * with this function you can send dual responses 
      *
      * @param mixed $webResponse
      * @param mixed $apiResponse

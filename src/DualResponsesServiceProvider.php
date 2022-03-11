@@ -1,10 +1,10 @@
 <?php
 
-namespace Mlk9\DualResponces;
+namespace Mlk9\DualResponses;
 
 use Illuminate\Support\Facades\Validator;
 
-class DualResponcesServiceProvider
+class DualResponsesServiceProvider
 {
     /**
      * Register any application services.
@@ -13,8 +13,8 @@ class DualResponcesServiceProvider
      */
     public function register() : void
     {
-        $this->app->singleton('dualResponces', function ($app) {
-            return new DualResponces();
+        $this->app->singleton('dualResponses', function ($app) {
+            return new DualResponses();
         });
     }
 
@@ -25,7 +25,7 @@ class DualResponcesServiceProvider
      */
     public function provides() : array
     {
-        return [DualResponces::class];
+        return [DualResponses::class];
     }
 
     /**
@@ -45,11 +45,11 @@ class DualResponcesServiceProvider
     protected function ExtendValidation(): void
     {
         Validator::extend("api_route",function ($attr,$value){
-            return app("dualResponces")->isApiRoute($value);
+            return app("dualResponses")->isApiRoute($value);
         },"is not an api route");
 
         Validator::extend("web_route",function ($attr,$value){
-            return app("dualResponces")->isWebRoute($value);
+            return app("dualResponses")->isWebRoute($value);
         },"is not an web route");
     }
 }

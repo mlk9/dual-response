@@ -1,10 +1,10 @@
 {
-    "name": "mlk9/dual-responces",
+    "name": "mlk9/dual-responses",
     "description": "you can take clean your codes and create one controller in Laravel",
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Mlk9\\DualResponces\\": "src/"
+            "Mlk9\\DualResponses\\": "src/"
         }
     },
     "authors": [
@@ -20,7 +20,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Mlk9\\DualResponces\\DualResponcesServiceProvider"
+                "Mlk9\\DualResponses\\DualResponsesServiceProvider"
             ]
         }
     }
