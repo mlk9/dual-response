@@ -7,9 +7,9 @@ use Illuminate\Support\Facades\Facade;
 /**
  * Mlk9\DualRes Methods
  *
- * @method   void responce(mixed $webResponce, mixed $apiResponce = null) Sets Mlk9\DualResponses
- * @method   void isApiRoute() Gets Mlk9\DualResponses 
- * @method   void isWebRoute() Gets Mlk9\DualResponses 
+ * @method   mixed responce(mixed $webResponce, mixed $apiResponce = null) Sets Mlk9\DualResponses
+ * @method   boolean isApiRoute() Gets Mlk9\DualResponses 
+ * @method   boolean isWebRoute() Gets Mlk9\DualResponses 
  * @category http response
  * @package  Laravel
  * @author   Mohammad Maleki <malekii24@outlook.com>

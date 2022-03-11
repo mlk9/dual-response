@@ -3,9 +3,19 @@
 namespace Mlk9\DualResponses;
 
 use Illuminate\Support\Facades\Request;
+use Carbon\Carbon;
 
 class DualResponses
 {
+
+    protected $defualtResponse = [
+        'status' => true,
+        'message' => 'successful response',
+        'errors' => [],
+        'data' => null,
+        'time' => Carbon::now()->timestamp,
+    ];
+
     /**
      * with this function you can send dual responses 
      *
@@ -13,13 +23,13 @@ class DualResponses
      * @param mixed $apiResponse
      * @return mixed
      */
-    public function response($webResponse, $apiResponse = null) : mixed
+    public function response($webResponse, $apiResponse = []) : mixed
     {
         if($this->isApiRoute() && !is_null($apiResponse))
         {
-           return call_user_func($apiResponse);
+            return [...self::$defualtResponse,...$apiResponse];
         }else{
-            return call_user_func($webResponse);
+            return $webResponse;
         }
     }
 
