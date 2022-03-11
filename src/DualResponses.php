@@ -19,7 +19,7 @@ class DualResponses
             'message' => _('request_successful'),
             'errors' => [],
             'data' => null,
-            'time' => Carbon::now()->timestamp,
+            'time' => now()->timestamp,
         ];
     }
 
@@ -40,7 +40,7 @@ class DualResponses
         }
         if($this->isApiRoute() && !is_null($apiResponse))
         {
-            return Response::json([...$this->defualtResponse,...$apiResponse],$this->defualtResponse['code']);
+            return Response::json(array_merge($this->defualtResponse,$apiResponse),$this->defualtResponse['code']);
         }else{
             return $webResponse;
         }
@@ -53,10 +53,7 @@ class DualResponses
      */
     public function isApiRoute() : bool
     {
-        if(Request::is('api/*'))
-        return true;
-        else
-        return false;
+        return Request::is('api/*') ? true : false;
     }
 
     /**
@@ -66,9 +63,6 @@ class DualResponses
      */
     public function isWebRoute() : bool
     {
-        if(!Request::is('api/*'))
-        return true;
-        else
-        return false;
+        return Request::is('api/*') ? false : true;
     }
 }
