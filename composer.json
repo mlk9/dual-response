@@ -23,5 +23,6 @@
                 "Mlk9\\DualResponces\\DualResponcesServiceProvider"
             ]
         }
-    }
+    },
+    "minimum-stability": "dev",
 }
