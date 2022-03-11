@@ -8,13 +8,18 @@ use Carbon\Carbon;
 class DualResponses
 {
 
-    protected $defualtResponse = [
-        'status' => true,
-        'message' => 'successful response',
-        'errors' => [],
-        'data' => null,
-        'time' => Carbon::now()->timestamp,
-    ];
+    private $defualtResponse;
+
+    public function __construct()
+    {
+        $this->defualtResponse = [
+            'status' => true,
+            'message' => 'successful response',
+            'errors' => [],
+            'data' => null,
+            'time' => Carbon::now()->timestamp,
+        ];
+    }
 
     /**
      * with this function you can send dual responses 
@@ -27,7 +32,7 @@ class DualResponses
     {
         if($this->isApiRoute() && !is_null($apiResponse))
         {
-            return [...self::$defualtResponse,...$apiResponse];
+            return [...$this->defualtResponse,...$apiResponse];
         }else{
             return $webResponse;
         }
