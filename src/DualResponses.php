@@ -32,11 +32,11 @@ class DualResponses
      */
     public function response($webResponse, $apiResponse = []) : mixed
     {
-        if(!is_null($apiResponse['errors']))
+        if(isset($apiResponse['errors']))
         {
             $this->defualtResponse['status'] = false;
-            $this->defualtResponse['code'] = is_null($apiResponse['code']) ? 400 : $apiResponse['code'];
-            $this->defualtResponse['message'] = is_null($apiResponse['message']) ? _('request_failed') : $apiResponse['message'];
+            $this->defualtResponse['code'] = !isset($apiResponse['code']) ? 400 : $apiResponse['code'];
+            $this->defualtResponse['message'] = !isset($apiResponse['message']) ? _('request_failed') : $apiResponse['message'];
         }
         if($this->isApiRoute() && !is_null($apiResponse))
         {
