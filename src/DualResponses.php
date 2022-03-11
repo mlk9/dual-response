@@ -37,11 +37,15 @@ class DualResponses
             $this->defualtResponse['code'] = !isset($apiResponse['code']) ? 400 : $apiResponse['code'];
             $this->defualtResponse['message'] = !isset($apiResponse['message']) ? _('request_failed') : $apiResponse['message'];
         }
-        if(isset($apiResponse['data']) && is_null($apiResponse['data']))
+        if(count($apiResponse['data'])>0 && empty($apiResponse['data']))
         {
             $this->defualtResponse['status'] = false;
             $this->defualtResponse['code'] = !isset($apiResponse['code']) ? 404 : $apiResponse['code'];
             $this->defualtResponse['message'] = !isset($apiResponse['message']) ? _('not_found') : $apiResponse['message'];
+            if($this->isWebRoute())
+            {
+                abort(404);
+            }
         }
         if($this->isApiRoute() && !is_null($apiResponse))
         {
