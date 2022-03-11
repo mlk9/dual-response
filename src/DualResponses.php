@@ -30,6 +30,11 @@ class DualResponses
      */
     public function response($webResponse, $apiResponse = []) : mixed
     {
+        if(!is_null($apiResponse['errors']))
+        {
+            $this->defualtResponse['status'] = false;
+            $this->defualtResponse['message'] = 'we have some errors!';
+        }
         if($this->isApiRoute() && !is_null($apiResponse))
         {
             return [...$this->defualtResponse,...$apiResponse];
