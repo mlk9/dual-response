@@ -3,8 +3,9 @@
 namespace Mlk9\DualResponses;
 
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\ServiceProvider;
 
-class DualResponsesServiceProvider
+class DualResponsesServiceProvider extends ServiceProvider
 {
     /**
      * Register any application services.
