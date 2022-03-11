@@ -1,6 +1,6 @@
 <?php
 
-namespace Mlk9\DualResponces\Facades;
+namespace Mlk9\DualResponses\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
