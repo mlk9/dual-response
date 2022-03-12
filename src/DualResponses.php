@@ -48,18 +48,21 @@ class DualResponses
             }
         }
 
+        //merged responses together
+        $mergedResponse = array_merge($this->defualtResponse,$apiResponse);
+
         //minify the json response
-        foreach($this->defualtResponse as $key => $value)
+        foreach($mergedResponse as $key => $value)
         {
-            if(empty($this->defualtResponse[$key]) || !isset($this->defualtResponse[$key]))
+            if(is_null($value))
             {
-                unset($this->defualtResponse[$key]);
+                unset($mergedResponse[$key]);
             }
         }
-        
+
         if($this->isApiRoute() && !is_null($apiResponse))
         {
-            return Response::json(array_merge($this->defualtResponse,$apiResponse),$this->defualtResponse['code']);
+            return Response::json($mergedResponse,$this->defualtResponse['code']);
         }else{
             return $webResponse;
         }
