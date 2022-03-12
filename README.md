@@ -1,6 +1,7 @@
 # Dual Response
 With this package, you can operate your API and web in a single controller. (Laravel 6>=)
-
+--
+با این پکیج می توانید پاسخ های متفاوتی هنگامی که در روت api یا web می فرستید دریافت کنید.
 # Installation via composer
 ```sh
 $ composer require mlk9/dual-response
