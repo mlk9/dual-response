@@ -1,10 +1,27 @@
 <?php
 
+/**
+ * DualResponses Service Provider File 
+ * 
+ * @package  Laravel
+ * @author   Mohammad Maleki <malekii24@outlook.com>
+ * @license  MIT https://github.com/mlk9/dual-responses/blob/main/LICENSE
+ * @link     https://github.com/mlk9/dual-responses
+ */
+
+
 namespace Mlk9\DualResponses;
 
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\ServiceProvider;
 
+/**
+ * DualResponses Service Provider Class 
+ * 
+ * @package  Laravel
+ * @author   Mohammad Maleki <malekii24@outlook.com>
+ * @license  MIT https://github.com/mlk9/dual-responses/blob/main/LICENSE
+ * @link     https://github.com/mlk9/dual-responses
+ */
 class DualResponsesServiceProvider extends ServiceProvider
 {
     /**
@@ -36,21 +53,9 @@ class DualResponsesServiceProvider extends ServiceProvider
      */
     public function boot() : void
     {
-        $this->ExtendValidation();
+        $this->publishes([
+            __DIR__.'/../lang' => is_dir(resource_path('lang')) ? resource_path('lang') : base_path('lang'),   
+        ], 'dual-responses');
     }
 
-    /**
-     * Add DualResponces validation rule
-     * @return void
-     */
-    protected function ExtendValidation(): void
-    {
-        Validator::extend("api_route",function ($attr,$value){
-            return app("dualResponses")->isApiRoute($value);
-        },"is not an api route");
-
-        Validator::extend("web_route",function ($attr,$value){
-            return app("dualResponses")->isWebRoute($value);
-        },"is not an web route");
-    }
 }

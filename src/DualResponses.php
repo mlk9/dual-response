@@ -1,10 +1,27 @@
 <?php
 
+/**
+ * DualResponses File 
+ * 
+ * @package  Laravel
+ * @author   Mohammad Maleki <malekii24@outlook.com>
+ * @license  MIT https://github.com/mlk9/dual-responses/blob/main/LICENSE
+ * @link     https://github.com/mlk9/dual-responses
+ */
+
 namespace Mlk9\DualResponses;
 
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Response;
 
+/**
+ * DualResponses Class 
+ * 
+ * @package  Laravel
+ * @author   Mohammad Maleki <malekii24@outlook.com>
+ * @license  MIT https://github.com/mlk9/dual-responses/blob/main/LICENSE
+ * @link     https://github.com/mlk9/dual-responses
+ */
 class DualResponses
 {
 
@@ -15,7 +32,7 @@ class DualResponses
         $this->defualtResponse = [
             'status_result' => true,
             'status_code' => 200,
-            'message' => _('request_successful'),
+            'message' => __('dualres.request_successful'),
             'errors' => null,
             'data' => null,
             'current_time' => now()->timestamp,
@@ -35,13 +52,13 @@ class DualResponses
         {
             $this->defualtResponse['status_result'] = false;
             $this->defualtResponse['status_code'] = !array_key_exists('status_code',$apiResponse) ? 400 : $apiResponse['status_code'];
-            $this->defualtResponse['message'] = !array_key_exists('message',$apiResponse) ? _('request_failed') : $apiResponse['message'];
+            $this->defualtResponse['message'] = !array_key_exists('message',$apiResponse) ? __('dualres.request_not_valid') : $apiResponse['message'];
         }
         if(array_key_exists('data',$apiResponse) && empty($apiResponse['data']))
         {
             $this->defualtResponse['status_result'] = false;
             $this->defualtResponse['status_code'] = !array_key_exists('status_code',$apiResponse) ? 404 : $apiResponse['status_code'];
-            $this->defualtResponse['message'] = !array_key_exists('message',$apiResponse) ? _('not_found') : $apiResponse['message'];
+            $this->defualtResponse['message'] = !array_key_exists('message',$apiResponse) ? __('dualres.not_found') : $apiResponse['message'];
             if($this->isWebRoute())
             {
                 abort(404);

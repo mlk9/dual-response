@@ -1,6 +1,6 @@
 {
     "name": "mlk9/dual-responses",
-    "description": "you can take clean your codes and create one controller in Laravel",
+    "description": "one do and two response , return different api and web route in a controller with this package (Laravel 6+)",
     "license": "MIT",
     "autoload": {
         "psr-4": {
@@ -14,7 +14,7 @@
         }
     ],
     "require": {
-        "php": ">=7.4.0",
+        "php": ">=8.0.0",
         "illuminate/support": "~6|~7|~8|~9"
     },
     "extra": {
