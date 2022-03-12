@@ -14,11 +14,11 @@ class DualResponses
     {
         $this->defualtResponse = [
             'status' => true,
-            'code' => 200,
+            'status_code' => 200,
             'message' => _('request_successful'),
             'errors' => null,
             'data' => null,
-            'time' => now()->timestamp,
+            'current_time' => now()->timestamp,
         ];
     }
 
@@ -31,17 +31,17 @@ class DualResponses
      */
     public function response($webResponse, $apiResponse = []) : mixed
     {
-        if(isset($apiResponse['errors']))
+        if(array_key_exists('errors',$apiResponse) && empty($apiResponse['errors']))
         {
             $this->defualtResponse['status'] = false;
-            $this->defualtResponse['code'] = !isset($apiResponse['code']) ? 400 : $apiResponse['code'];
-            $this->defualtResponse['message'] = !isset($apiResponse['message']) ? _('request_failed') : $apiResponse['message'];
+            $this->defualtResponse['status_code'] = !array_key_exists('status_code',$apiResponse) ? 400 : $apiResponse['status_code'];
+            $this->defualtResponse['message'] = !array_key_exists('message',$apiResponse) ? _('request_failed') : $apiResponse['message'];
         }
-        if(count($apiResponse)>0 && empty($apiResponse['data']))
+        if(array_key_exists('data',$apiResponse) && empty($apiResponse['data']))
         {
             $this->defualtResponse['status'] = false;
-            $this->defualtResponse['code'] = !isset($apiResponse['code']) ? 404 : $apiResponse['code'];
-            $this->defualtResponse['message'] = !isset($apiResponse['message']) ? _('not_found') : $apiResponse['message'];
+            $this->defualtResponse['status_code'] = !array_key_exists('status_code',$apiResponse) ? 404 : $apiResponse['status_code'];
+            $this->defualtResponse['message'] = !array_key_exists('message',$apiResponse) ? _('not_found') : $apiResponse['message'];
             if($this->isWebRoute())
             {
                 abort(404);
