@@ -16,7 +16,7 @@ class DualResponses
             'status' => true,
             'code' => 200,
             'message' => _('request_successful'),
-            'errors' => [],
+            'errors' => null,
             'data' => null,
             'time' => now()->timestamp,
         ];
