@@ -1,28 +1,28 @@
 <?php
 
 /**
- * DualResponses File 
+ * DualResponse File 
  * 
  * @package  Laravel
  * @author   Mohammad Maleki <malekii24@outlook.com>
- * @license  MIT https://github.com/mlk9/dual-responses/blob/main/LICENSE
- * @link     https://github.com/mlk9/dual-responses
+ * @license  MIT https://github.com/mlk9/dual-response/blob/main/LICENSE
+ * @link     https://github.com/mlk9/dual-response
  */
 
-namespace Mlk9\DualResponses;
+namespace Mlk9\DualResponse;
 
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Response;
 
 /**
- * DualResponses Class 
+ * DualResponse Class 
  * 
  * @package  Laravel
  * @author   Mohammad Maleki <malekii24@outlook.com>
- * @license  MIT https://github.com/mlk9/dual-responses/blob/main/LICENSE
- * @link     https://github.com/mlk9/dual-responses
+ * @license  MIT https://github.com/mlk9/dual-response/blob/main/LICENSE
+ * @link     https://github.com/mlk9/dual-response
  */
-class DualResponses
+class DualResponse
 {
 
     private $defualtResponse = [];
@@ -40,7 +40,7 @@ class DualResponses
     }
 
     /**
-     * with this function you can send dual responses 
+     * with this function you can send dual response 
      *
      * @param mixed $webResponse
      * @param mixed $apiResponse
@@ -65,7 +65,7 @@ class DualResponses
             }
         }
 
-        //merged responses together
+        //merged response together
         $mergedResponse = array_merge($this->defualtResponse,$apiResponse);
 
         //minify the json response

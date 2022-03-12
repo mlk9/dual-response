@@ -1,27 +1,27 @@
 <?php
 /**
- * DualResponses Facade File 
+ * DualResponse Facade File 
  * 
  * @package  Laravel
  * @author   Mohammad Maleki <malekii24@outlook.com>
- * @license  MIT https://github.com/mlk9/dual-responses/blob/main/LICENSE
- * @link     https://github.com/mlk9/dual-responses
+ * @license  MIT https://github.com/mlk9/dual-response/blob/main/LICENSE
+ * @link     https://github.com/mlk9/dual-response
  */
 
-namespace Mlk9\DualResponses\Facades;
+namespace Mlk9\DualResponse\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
 /**
  * Mlk9\DualRes Methods
  *
- * @method   mixed responce(mixed $webResponce, mixed $apiResponce = null) Sets Mlk9\DualResponses
- * @method   boolean isApiRoute() Gets Mlk9\DualResponses 
- * @method   boolean isWebRoute() Gets Mlk9\DualResponses 
+ * @method   mixed responce(mixed $webResponce, mixed $apiResponce = null) Sets Mlk9\DualResponse
+ * @method   boolean isApiRoute() Gets Mlk9\DualResponse 
+ * @method   boolean isWebRoute() Gets Mlk9\DualResponse 
  * @package  Laravel
  * @author   Mohammad Maleki <malekii24@outlook.com>
- * @license  MIT https://github.com/mlk9/dual-responses/blob/main/LICENSE
- * @link     https://github.com/mlk9/dual-responses
+ * @license  MIT https://github.com/mlk9/dual-response/blob/main/LICENSE
+ * @link     https://github.com/mlk9/dual-response
  */
 class DualRes extends Facade
 {
@@ -32,6 +32,6 @@ class DualRes extends Facade
      */
     protected static function getFacadeAccessor() : string
     {
-        return 'dualResponses';
+        return 'dualResponse';
     }
 }

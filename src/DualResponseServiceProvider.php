@@ -1,28 +1,28 @@
 <?php
 
 /**
- * DualResponses Service Provider File 
+ * DualResponse Service Provider File 
  * 
  * @package  Laravel
  * @author   Mohammad Maleki <malekii24@outlook.com>
- * @license  MIT https://github.com/mlk9/dual-responses/blob/main/LICENSE
- * @link     https://github.com/mlk9/dual-responses
+ * @license  MIT https://github.com/mlk9/dual-response/blob/main/LICENSE
+ * @link     https://github.com/mlk9/dual-response
  */
 
 
-namespace Mlk9\DualResponses;
+namespace Mlk9\DualResponse;
 
 use Illuminate\Support\ServiceProvider;
 
 /**
- * DualResponses Service Provider Class 
+ * DualResponse Service Provider Class 
  * 
  * @package  Laravel
  * @author   Mohammad Maleki <malekii24@outlook.com>
- * @license  MIT https://github.com/mlk9/dual-responses/blob/main/LICENSE
- * @link     https://github.com/mlk9/dual-responses
+ * @license  MIT https://github.com/mlk9/dual-response/blob/main/LICENSE
+ * @link     https://github.com/mlk9/dual-response
  */
-class DualResponsesServiceProvider extends ServiceProvider
+class DualResponseServiceProvider extends ServiceProvider
 {
     /**
      * Register any application services.
@@ -31,8 +31,8 @@ class DualResponsesServiceProvider extends ServiceProvider
      */
     public function register() : void
     {
-        $this->app->singleton('dualResponses', function ($app) {
-            return new DualResponses();
+        $this->app->singleton('dualResponse', function ($app) {
+            return new DualResponse();
         });
     }
 
@@ -43,7 +43,7 @@ class DualResponsesServiceProvider extends ServiceProvider
      */
     public function provides() : array
     {
-        return [DualResponses::class];
+        return [DualResponse::class];
     }
 
     /**
@@ -55,7 +55,7 @@ class DualResponsesServiceProvider extends ServiceProvider
     {
         $this->publishes([
             __DIR__.'/../lang' => is_dir(resource_path('lang')) ? resource_path('lang') : base_path('lang'),   
-        ], 'dual-responses');
+        ], 'dual-response');
     }
 
 }
