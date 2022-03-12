@@ -1,3 +1,5 @@
+<img src="https://repository-images.githubusercontent.com/468599015/5e6fd72f-0043-44c2-b968-12717fb40bf7" />
+
 # Dual Response
 With this package, you can operate your API and web in a single controller. (Laravel 6>=)
 --
