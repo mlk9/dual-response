@@ -51,7 +51,7 @@ class DualResponses
         //minify the json response
         foreach($this->defualtResponse as $key => $value)
         {
-            if(empty($this->defualtResponse[$key]))
+            if(empty($this->defualtResponse[$key]) || is_null($this->defualtResponse[$key]))
             {
                 unset($this->defualtResponse[$key]);
             }
