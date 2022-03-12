@@ -47,6 +47,16 @@ class DualResponses
                 abort(404);
             }
         }
+
+        //minify the json response
+        foreach($this->defualtResponse as $key => $value)
+        {
+            if(empty($this->defualtResponse[$key]))
+            {
+                unset($this->defualtResponse[$key]);
+            }
+        }
+        
         if($this->isApiRoute() && !is_null($apiResponse))
         {
             return Response::json(array_merge($this->defualtResponse,$apiResponse),$this->defualtResponse['code']);
