@@ -54,7 +54,7 @@ class DualResponse
             $this->defualtResponse['status_code'] = !array_key_exists('status_code',$apiResponse) ? 400 : $apiResponse['status_code'];
             $this->defualtResponse['message'] = !array_key_exists('message',$apiResponse) ? __('dualres.request_not_valid') : $apiResponse['message'];
         }
-        if(array_key_exists('data',$apiResponse) && !empty($apiResponse['data']))
+        if(array_key_exists('data',$apiResponse) && empty($apiResponse['data']))
         {
             $this->defualtResponse['status_result'] = false;
             $this->defualtResponse['status_code'] = !array_key_exists('status_code',$apiResponse) ? 404 : $apiResponse['status_code'];
